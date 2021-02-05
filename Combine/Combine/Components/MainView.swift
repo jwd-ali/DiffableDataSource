@@ -29,8 +29,8 @@ class MainView: UIViewController {
 }
 
 // MARK: - Setup UI & Cells
-private extension MainView
-{
+private extension MainView {
+    
     func setupObservers() {
         $keyStroke
             .receive(on: RunLoop.main)
@@ -38,8 +38,8 @@ private extension MainView
                 self?.viewModel.keyWordSearch = $0
         }.store(in: &cancellables)
         
-        viewModel.diffableDataSource = MoviesTableViewDiffableDataSource(tableView: tableView) { (tableView, indexPath, model) -> UITableViewCell? in
-            
+        viewModel.diffableDataSource = MoviesTableViewDiffableDataSource(tableView: tableView) {
+            (tableView, indexPath, model) -> UITableViewCell? in
             guard
                 let cell = tableView.dequeueReusableCell(withIdentifier: MovieCell.reuseIdentifier, for: indexPath) as? MovieCell
             else { return UITableViewCell() }
@@ -50,6 +50,8 @@ private extension MainView
         
         
     }
+    
+    
     func registerCell() {
         let movieCell = UINib(nibName: MovieCell.reuseIdentifier, bundle: nil)
         tableView.register(movieCell, forCellReuseIdentifier: MovieCell.reuseIdentifier)

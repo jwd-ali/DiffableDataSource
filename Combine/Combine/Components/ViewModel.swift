@@ -16,7 +16,7 @@ class ViewModel: ObservableObject {
     private let provider: FilmsProviderType
     init(filmProvider: FilmsProviderType) {
         provider = filmProvider
-        $keyWordSearch.receive(on: RunLoop.main).debounce(for: .seconds(0.5), scheduler: RunLoop.main)
+        $keyWordSearch.receive(on: RunLoop.main).debounce(for: .seconds(0.3), scheduler: RunLoop.main)
             .sink { (_) in
                 self.fetchMovies()
         }.store(in: &cancellables)
