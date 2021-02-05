@@ -26,10 +26,6 @@ class MainView: UIViewController {
            registerCell()
         setupObservers()
     }
-
-    
-
-    
 }
 
 // MARK: - Setup UI & Cells
